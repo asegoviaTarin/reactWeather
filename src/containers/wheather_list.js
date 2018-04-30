@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect } from 'react-redux';
-import {Sparklines, SparklinesLine } from 'react-sparklines'
+import Chart from '../components/chart'
 
 class WheatherList extends Component {
 
@@ -14,21 +14,9 @@ class WheatherList extends Component {
     return (
       <tr key = {cityData.city.name}>
         <td>{cityData.city.name}</td>
-        <td>
-          <Sparklines heigth={120} with={100} data={temps}>
-            <SparklinesLine color="red"/>
-          </Sparklines>
-        </td>
-        <td>
-          <Sparklines heigth={120} with={100} data={humidities}>
-            <SparklinesLine color="blue"/>
-          </Sparklines>
-        </td>
-        <td>
-          <Sparklines heigth={120} with={100} data={pressure}>
-            <SparklinesLine color="green"/>
-          </Sparklines>
-        </td>
+        <td><Chart data={temps} color="orange" units="K"/></td>
+        <td><Chart data={humidities} color="blue" units="hPa"/></td>
+        <td><Chart data={pressure} color="green" units="%"/></td>
       </tr>
     )
   }
